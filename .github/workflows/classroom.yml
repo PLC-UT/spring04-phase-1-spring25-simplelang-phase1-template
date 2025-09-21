@@ -236,9 +236,7 @@ jobs:
       with:
         test-name: Comments
         setup-command: ''
-        command: javac -cp utilities/antlr-4.13.1-complete.jar -d out $(find src gen
-          -name "*.java") && java -cp out:utilities/antlr-4.13.1-complete.jar SimpleLang
-          tests/12-comments.cpy | sort -t':' -k1.6n -k2
+        command: javac -cp utilities/antlr-4.13.1-complete.jar -d out $(find src gen -name "*.java") && curl -sL https://raw.githubusercontent.com/PLC-UT/spring04-phase-1-spring25-simplelang-phase1-template/main/tests/12-comments.cpy | java -cp out:utilities/antlr-4.13.1-complete.jar SimpleLang | sort -t':' -k1.6n -k2
         input: ''
         expected-output: |-
           Line 1: Stmt function main = 2
@@ -388,7 +386,8 @@ jobs:
         command: javac -cp utilities/antlr-4.13.1-complete.jar -d out $(find src gen
           -name "*.java") && java -cp out:utilities/antlr-4.13.1-complete.jar SimpleLang
           tests/19-sum.cpy | sort -t':' -k1.6n -k2
-        input: |-
+        input: ''
+        expected-output: |-
           Line 1: Stmt function main = 6
           Line 2: Expr printf
           Line 4: Expr 10
@@ -398,7 +397,6 @@ jobs:
           Line 8: Stmt selection = 1
           Line 9: Expr printf
           Line 11: Expr 0
-        expected-output: ''
         comparison-method: contains
         timeout: 10
         max-score: 1
